@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const reels = [
   { id: "DTemYiUk870", url: "https://www.instagram.com/reel/DTemYiUk870/embed/captioned/" },
@@ -10,62 +11,48 @@ const reels = [
 ];
 
 const reelStats = [
-  { value: "50K+", label: "Total Reach", emoji: "🚀" },
-  { value: "10K+", label: "Views", emoji: "👁️" },
-  { value: "1K+", label: "Likes", emoji: "❤️" },
-  { value: "Featured", label: "Content", emoji: "⭐" },
+  { value: "50K+", label: "Total Reach", emoji: "🚀", bg: "bg-sketch-orange/30", rot: -2 },
+  { value: "10K+", label: "Views", emoji: "👁️", bg: "bg-sketch-blue/25", rot: 1.5 },
+  { value: "1K+", label: "Likes", emoji: "❤️", bg: "bg-sketch-red/20", rot: -1.5 },
+  { value: "Featured", label: "Content", emoji: "⭐", bg: "bg-sketch-yellow/60", rot: 2 },
 ];
 
 export function Reels() {
   return (
-    <section id="reels" className="relative py-24 sm:py-32 overflow-hidden bg-[var(--surface-raised)]">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section header */}
+    <section id="reels" className="relative py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <div className="section-divider" />
-            <span className="text-sm font-semibold uppercase tracking-widest text-amber-500">
-              Reels & Shorts
-            </span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-playfair)]"
-          >
-            Creative <span className="text-gradient">Highlights</span>
-          </motion.h2>
+          <SectionHeader
+            eyebrow="✦ Reels & Shorts"
+            title="Creative"
+            highlight="highlights"
+            accent="blue"
+          />
         </div>
 
-        {/* Stats row */}
+        {/* Stats — pinned notes */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-14"
         >
           {reelStats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-[var(--surface)] rounded-2xl p-5 border border-[var(--border)] text-center hover:border-amber-500/30 transition-all"
+              className={`relative ${stat.bg} ink-border wobble p-5 text-center hard-shadow-sm`}
+              style={{ transform: `rotate(${stat.rot}deg)` }}
             >
-              <span className="text-2xl block mb-2">{stat.emoji}</span>
-              <div className="text-xl sm:text-2xl font-bold text-gradient">{stat.value}</div>
-              <div className="text-xs text-[var(--muted)] mt-1 uppercase tracking-wider">{stat.label}</div>
+              <span className="thumbtack" style={{ top: -7, left: "50%", marginLeft: -7 }} />
+              <span className="text-3xl block mb-1">{stat.emoji}</span>
+              <div className="text-2xl font-bold">{stat.value}</div>
+              <div className="text-base text-ink/70 mt-0.5">{stat.label}</div>
             </div>
           ))}
         </motion.div>
 
-        {/* Embedded Reels */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Reels */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {reels.map((reel, index) => (
             <motion.div
               key={reel.id}
@@ -73,13 +60,14 @@ export function Reels() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative rounded-2xl overflow-hidden border border-[var(--border)] hover:border-amber-500/30 bg-[var(--surface)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+              style={{ transform: `rotate(${index % 2 === 0 ? -1.5 : 1.5}deg)` }}
+              className="relative bg-white ink-border wobble p-2.5 hard-shadow tilt-hover"
             >
-              <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
+              <span className="tape" style={{ top: -10, left: "50%", marginLeft: -40 }} />
+              <div className="relative w-full overflow-hidden ink-border-2" style={{ paddingBottom: "177.78%" }}>
                 <iframe
                   src={reel.url}
                   className="absolute inset-0 w-full h-full"
-                  frameBorder="0"
                   scrolling="no"
                   allowFullScreen
                   loading="lazy"
@@ -89,6 +77,10 @@ export function Reels() {
             </motion.div>
           ))}
         </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-24">
+        <hr className="dashed-divider" />
       </div>
     </section>
   );

@@ -1,182 +1,199 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 const stats = [
-  { value: "2+", label: "Years Experience" },
-  { value: "6+", label: "Companies" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "15+", label: "Skills Mastered" },
+  { value: "2+", label: "Years Exp", rot: -2 },
+  { value: "6+", label: "Companies", rot: 1.5 },
+  { value: "50+", label: "Projects", rot: -1 },
+  { value: "15+", label: "Skills", rot: 2 },
+];
+
+const floatingDoodles = [
+  { emoji: "✏️", className: "top-10 left-[8%] text-5xl", delay: 0 },
+  { emoji: "</>", className: "top-24 right-[10%] text-3xl font-bold text-sketch-blue", delay: 1.2 },
+  { emoji: "✦", className: "bottom-32 left-[14%] text-4xl text-sketch-orange", delay: 0.6 },
+  { emoji: "📎", className: "bottom-20 right-[16%] text-4xl", delay: 1.8 },
+  { emoji: "✱", className: "top-1/2 left-[4%] text-3xl text-sketch-red", delay: 0.9 },
 ];
 
 export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden grid-pattern"
+      className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16"
     >
-      {/* Ambient background blobs */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-amber-500/10 rounded-full blur-[100px] animate-subtle-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-400/8 rounded-full blur-[120px] animate-subtle-pulse" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[150px]" />
-      </div>
+      {/* Floating doodles */}
+      {floatingDoodles.map((d, i) => (
+        <motion.span
+          key={i}
+          className={`pointer-events-none absolute hidden sm:block ${d.className}`}
+          animate={{ y: [0, -12, 0], rotate: [0, 4, 0] }}
+          transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: d.delay }}
+        >
+          {d.emoji}
+        </motion.span>
+      ))}
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-32 lg:py-40 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
           {/* Left content */}
-          <div className="order-2 lg:order-1">
+          <div className="lg:col-span-3 order-2 lg:order-1 text-center lg:text-left">
+            {/* Sticky-note tag */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8"
+              initial={{ opacity: 0, rotate: -6, y: 10 }}
+              animate={{ opacity: 1, rotate: -3, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-sketch-yellow ink-border-2 wobble px-4 py-1.5 mb-8 hard-shadow-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-              <span className="text-sm font-medium text-amber-600 dark:text-amber-400">
-                Available for new projects
-              </span>
+              <span className="w-2.5 h-2.5 rounded-full bg-sketch-red animate-pulse" />
+              <span className="text-base font-bold">Available for new projects!</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] font-[family-name:var(--font-playfair)]"
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.95]"
             >
               Words that
               <br />
-              <span className="text-gradient">move markets</span>
-              <br />
-              & minds.
+              <span className="relative inline-block text-sketch-orange">
+                move minds
+                {/* Hand-drawn scribble underline */}
+                <svg
+                  className="absolute -bottom-4 left-0 w-full"
+                  height="24"
+                  viewBox="0 0 300 24"
+                  fill="none"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    className="scribble-path"
+                    d="M3 14C50 6 100 18 150 11C200 4 250 16 297 9"
+                    stroke="#fb923c"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+              <br />& markets.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-6 text-lg sm:text-xl text-[var(--muted)] max-w-lg leading-relaxed"
+              className="mt-8 text-xl sm:text-2xl max-w-xl mx-auto lg:mx-0 leading-relaxed text-ink/80"
             >
-              Content Writer • Scriptwriter • SEO Strategist • Brand Storyteller.
-              Transforming complex ideas into compelling narratives that drive engagement
-              and deliver results.
+              Content Writer • Scriptwriter • SEO Strategist • Brand Storyteller —
+              turning complex ideas into stories that{" "}
+              <span className="marker font-bold">actually convert.</span>
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-10 flex flex-wrap items-center gap-4"
+              className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-5"
             >
               <Link
                 href="#portfolio"
-                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-all hover:scale-[1.02]"
+                className="bg-sketch-orange text-ink ink-border wobble px-7 py-3.5 text-xl font-bold hard-shadow press"
               >
-                View Portfolio
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                View Portfolio →
               </Link>
               <Link
                 href="#contact"
-                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-[var(--border)] hover:border-amber-500/50 text-[var(--foreground)] font-semibold text-sm transition-all hover:bg-amber-500/5"
+                className="bg-white text-ink ink-border wobble-alt px-7 py-3.5 text-xl font-bold hard-shadow press"
               >
-                Hire Me
-                <span className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
-                  <ArrowRight className="h-3 w-3 text-amber-500" />
-                </span>
+                Hire Me ✦
               </Link>
             </motion.div>
 
-            {/* Stats row */}
+            {/* Stats — pinned notes */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6"
+              className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4"
             >
-              {stats.map((stat, i) => (
-                <div key={stat.label} className="group">
-                  <div className="text-2xl sm:text-3xl font-bold text-gradient">
-                    {stat.value}
-                  </div>
-                  <div className="mt-1 text-xs sm:text-sm text-[var(--muted)] uppercase tracking-wider">
-                    {stat.label}
-                  </div>
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="relative bg-white ink-border-2 wobble px-3 py-4 text-center hard-shadow-sm"
+                  style={{ transform: `rotate(${stat.rot}deg)` }}
+                >
+                  <span className="thumbtack" style={{ top: -7, left: "50%", marginLeft: -7 }} />
+                  <div className="text-3xl font-bold text-sketch-orange">{stat.value}</div>
+                  <div className="mt-1 text-sm text-ink/70">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
           </div>
 
-          {/* Right - Portrait */}
+          {/* Right - Polaroid portrait */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: -6 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="order-1 lg:order-2 flex justify-center lg:justify-end"
+            className="lg:col-span-2 order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative">
-              {/* Decorative ring */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-amber-500/20 via-transparent to-amber-400/10 blur-sm" />
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden border-2 border-amber-500/20 shadow-2xl shadow-amber-500/10">
-                <Image
-                  src="/hero-portrait.png"
-                  alt="Anusamrat M - Content Writer"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/30 to-transparent" />
+            <div className="relative animate-float-slow">
+              {/* Tape pieces */}
+              <span className="tape" style={{ top: -12, left: 30, width: 110 }} />
+              <span className="tape tape-2" style={{ top: -12, right: 30, width: 110 }} />
+              {/* Polaroid frame */}
+              <div className="bg-white ink-border p-3 pb-14 hard-shadow rotate-2">
+                <div className="relative w-64 h-72 sm:w-72 sm:h-80 overflow-hidden ink-border-2">
+                  <Image
+                    src="/hero-portrait.png"
+                    alt="Anusamrat M - Content Writer"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <p
+                  className="mt-3 text-center text-2xl"
+                  style={{ fontFamily: "var(--font-kalam)" }}
+                >
+                  Anusamrat ✍️
+                </p>
               </div>
-              {/* Floating badge */}
+              {/* Floating mini badge */}
               <motion.div
-                animate={{ y: [0, -8, 0] }}
+                animate={{ y: [0, -8, 0], rotate: [-4, 2, -4] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -left-4 glass rounded-2xl px-4 py-3 shadow-xl"
+                className="absolute -bottom-6 -left-8 bg-sketch-blue ink-border-2 wobble px-3 py-2 hard-shadow-sm"
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">✍️</span>
-                  <div>
-                    <div className="text-xs font-bold text-[var(--foreground)]">Content Writer</div>
-                    <div className="text-[10px] text-[var(--muted)]">Bengaluru, India</div>
-                  </div>
-                </div>
-              </motion.div>
-              {/* Floating badge top */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -top-4 -right-4 glass rounded-2xl px-4 py-3 shadow-xl"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">🎬</span>
-                  <div>
-                    <div className="text-xs font-bold text-[var(--foreground)]">Scriptwriter</div>
-                    <div className="text-[10px] text-[var(--muted)]">YouTube & Films</div>
-                  </div>
-                </div>
+                <span className="text-base font-bold">🎬 Scriptwriter</span>
               </motion.div>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        transition={{ delay: 1.4 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
       >
-        <span className="text-xs text-[var(--muted)] uppercase tracking-widest">Scroll</span>
-        <motion.div
+        <span className="text-base text-ink/60" style={{ fontFamily: "var(--font-kalam)" }}>
+          scroll down
+        </span>
+        <motion.span
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
+          className="text-2xl"
         >
-          <ChevronDown className="w-5 h-5 text-amber-500" />
-        </motion.div>
+          ↓
+        </motion.span>
       </motion.div>
     </section>
   );

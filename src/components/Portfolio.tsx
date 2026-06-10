@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import * as React from "react";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const categories = ["All", "Social Media", "Branding", "Content", "Marketing", "Editorial"];
 
@@ -29,48 +30,34 @@ const posts = [
   { id: 20, src: "/Posts/20.jpeg", title: "Brand Content Visual", category: "Social Media", link: "https://www.instagram.com/p/DC3O4Ljq0kc/" },
 ];
 
+const rotations = [-2, 1.5, -1, 2, -1.5, 1, -2, 1.5];
+
 export function Portfolio() {
   const [activeCategory, setActiveCategory] = React.useState("All");
   const [selectedPost, setSelectedPost] = React.useState<typeof posts[0] | null>(null);
 
   const filteredPosts =
-    activeCategory === "All"
-      ? posts
-      : posts.filter((p) => p.category === activeCategory);
+    activeCategory === "All" ? posts : posts.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="portfolio" className="relative py-24 sm:py-32 overflow-hidden bg-[var(--surface-raised)]">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section header */}
-        <div className="max-w-3xl mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <div className="section-divider" />
-            <span className="text-sm font-semibold uppercase tracking-widest text-amber-500">
-              Portfolio
-            </span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-playfair)]"
-          >
-            Featured <span className="text-gradient">Work</span>
-          </motion.h2>
+    <section id="portfolio" className="relative py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="max-w-3xl mb-10">
+          <SectionHeader
+            eyebrow="✦ Portfolio"
+            title="Featured"
+            highlight="work"
+            accent="orange"
+          />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-[var(--muted)] text-lg"
+            className="mt-6 text-xl text-ink/75"
           >
-            A collection of Instagram posts showcasing content strategy, branding visuals, and creative campaigns.
+            A wall of Instagram posts — content strategy, branding visuals, and creative
+            campaigns, pinned up for you.
           </motion.p>
         </div>
 
@@ -79,17 +66,15 @@ export function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap gap-2 mb-10"
+          className="flex flex-wrap gap-3 mb-12"
         >
-          {categories.map((cat) => (
+          {categories.map((cat, i) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-amber-500 text-white shadow-lg shadow-amber-500/25"
-                  : "bg-[var(--surface)] border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-amber-500/30"
+              style={{ transform: `rotate(${i % 2 === 0 ? -1.5 : 1.5}deg)` }}
+              className={`ink-border-2 wobble px-4 py-1.5 text-lg font-bold hard-shadow-sm press ${
+                activeCategory === cat ? "bg-sketch-orange" : "bg-white"
               }`}
             >
               {cat}
@@ -97,82 +82,82 @@ export function Portfolio() {
           ))}
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {/* Polaroid wall */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
           {filteredPosts.map((post, index) => (
-            <motion.div
+            <motion.button
               key={post.id}
               layout
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3, delay: index * 0.03 }}
-              className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer border border-[var(--border)] hover:border-amber-500/30 transition-all"
               onClick={() => setSelectedPost(post)}
+              style={{ transform: `rotate(${rotations[index % rotations.length]}deg)` }}
+              className="group relative bg-white ink-border p-2 pb-8 hard-shadow-sm hover:hard-shadow hover:-translate-y-1 transition-all duration-300 cursor-pointer text-left"
             >
-              <Image
-                src={post.src}
-                alt={post.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-              />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                <span className="text-xs font-medium text-amber-400 mb-1">{post.category}</span>
-                <h4 className="text-sm font-bold text-white leading-tight">{post.title}</h4>
+              {/* Tape + pin */}
+              <span className="tape" style={{ top: -10, left: "50%", marginLeft: -40 }} />
+              <span className="thumbtack" style={{ top: -6, right: 8 }} />
+              <div className="relative aspect-square overflow-hidden ink-border-2">
+                <Image
+                  src={post.src}
+                  alt={post.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
               </div>
-            </motion.div>
+              <p className="mt-2 text-base font-bold leading-tight line-clamp-1 px-1">
+                {post.title}
+              </p>
+            </motion.button>
           ))}
         </div>
+      </div>
 
-        </div>
-
-      {/* Lightbox Modal */}
+      {/* Lightbox */}
       {selectedPost && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 p-4"
           onClick={() => setSelectedPost(null)}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="relative max-w-2xl w-full bg-[var(--surface)] rounded-3xl overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            className="relative max-w-lg w-full bg-white ink-border wobble p-3 pb-6 hard-shadow"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-square">
-              <Image
-                src={selectedPost.src}
-                alt={selectedPost.title}
-                fill
-                className="object-cover"
-              />
+            <span className="tape" style={{ top: -12, left: "50%", marginLeft: -55, width: 110 }} />
+            <div className="relative aspect-square overflow-hidden ink-border-2">
+              <Image src={selectedPost.src} alt={selectedPost.title} fill className="object-cover" />
             </div>
-            <div className="p-6">
-              <span className="text-xs font-medium text-amber-500 uppercase tracking-wider">{selectedPost.category}</span>
-              <h3 className="text-xl font-bold mt-2">{selectedPost.title}</h3>
+            <div className="px-2 pt-4">
+              <span className="inline-block bg-sketch-yellow ink-border-2 wobble px-2.5 py-0.5 text-sm font-bold">
+                {selectedPost.category}
+              </span>
+              <h3 className="text-2xl mt-2">{selectedPost.title}</h3>
               <a
                 href={selectedPost.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 transition-colors"
+                className="inline-block mt-4 bg-sketch-orange ink-border-2 wobble px-5 py-2 text-lg font-bold hard-shadow-sm press"
               >
-                View on Instagram
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
+                View on Instagram ↗
               </a>
             </div>
             <button
               onClick={() => setSelectedPost(null)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors"
+              className="absolute -top-4 -right-4 w-11 h-11 rounded-full bg-sketch-red text-white ink-border-2 flex items-center justify-center text-xl font-bold hard-shadow-sm press"
             >
               ✕
             </button>
           </motion.div>
         </div>
       )}
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-24">
+        <hr className="dashed-divider" />
+      </div>
     </section>
   );
 }

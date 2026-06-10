@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const videos = [
   { id: "v53lvlSbzcs", title: "Featured Video 1" },
@@ -16,47 +17,27 @@ const videos = [
 
 export function Videos() {
   return (
-    <section id="videos" className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-red-500/5 rounded-full blur-[100px]" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section header */}
-        <div className="max-w-3xl mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <div className="section-divider" />
-            <span className="text-sm font-semibold uppercase tracking-widest text-amber-500">
-              Videos
-            </span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-playfair)]"
-          >
-            Top <span className="text-gradient">Videos</span>
-          </motion.h2>
+    <section id="videos" className="relative py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="max-w-3xl mb-14">
+          <SectionHeader
+            eyebrow="✦ Videos"
+            title="Top"
+            highlight="videos"
+            accent="red"
+          />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-[var(--muted)] text-lg"
+            className="mt-6 text-xl text-ink/75"
           >
-            Scripts that simplified complex concepts and scaled educational content on YouTube.
+            Scripts that simplified complex concepts and scaled educational content on YouTube. 🎬
           </motion.p>
         </div>
 
-        {/* Video grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {videos.map((video, index) => (
             <motion.div
               key={video.id}
@@ -64,9 +45,12 @@ export function Videos() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group relative rounded-2xl overflow-hidden border border-[var(--border)] hover:border-amber-500/30 bg-[var(--surface)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+              style={{ transform: `rotate(${index % 2 === 0 ? -1 : 1}deg)` }}
+              className="relative bg-white ink-border wobble p-3 hard-shadow tilt-hover"
             >
-              <div className="relative aspect-video">
+              <span className="thumbtack thumbtack-orange" style={{ top: -6, left: 18 }} />
+              <span className="thumbtack" style={{ top: -6, right: 18 }} />
+              <div className="relative aspect-video overflow-hidden ink-border-2">
                 <iframe
                   src={`https://www.youtube.com/embed/${video.id}`}
                   title={video.title}
@@ -79,6 +63,10 @@ export function Videos() {
             </motion.div>
           ))}
         </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-24">
+        <hr className="dashed-divider" />
       </div>
     </section>
   );
