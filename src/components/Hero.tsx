@@ -154,7 +154,7 @@ export function Hero() {
               <div className="bg-white ink-border p-3 pb-14 hard-shadow rotate-2">
                 <div className="relative w-64 h-72 sm:w-72 sm:h-80 overflow-hidden ink-border-2">
                   <Image
-                    src="/hero-portrait.png"
+                    src="/hero-portrait.jpeg"
                     alt="Anusamrat M - Content Writer"
                     fill
                     className="object-cover"
