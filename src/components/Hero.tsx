@@ -5,10 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const stats = [
-  { value: "2.5+", label: "Years Exp", rot: -2 },
-  { value: "5+", label: "Companies", rot: 1.5 },
-  { value: "30+", label: "Projects", rot: -1 },
-  { value: "15+", label: "Skills", rot: 2 },
+  { value: "2.5", label: "Years exp", rot: -2 },
+  { value: "600+", label: "Content Pieces", rot: 1.5 },
+  { value: "30+", label: "Projects/Campaigns", rot: -1 },
+  { value: "20+", label: "Brands", rot: 2 },
 ];
 
 const floatingDoodles = [

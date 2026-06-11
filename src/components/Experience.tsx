@@ -101,7 +101,7 @@ export function Experience() {
     <section id="experience" className="relative py-24 sm:py-28 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="max-w-3xl mb-16">
-          <SectionHeader eyebrow="✦ Career" title="My winding" highlight="journey" accent="red" />
+          <SectionHeader eyebrow="✦ Career" title="The Road" highlight="So Far" accent="red" />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -109,8 +109,7 @@ export function Experience() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-xl text-ink/75"
           >
-            Six stops on the map so far — follow the trail from{" "}
-            <span className="marker font-bold">now</span> all the way back to where it began. ✎
+            The journey of learning and evolving across brands, content and strategies.
           </motion.p>
         </div>
 
