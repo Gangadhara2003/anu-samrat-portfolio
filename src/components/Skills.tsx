@@ -7,9 +7,8 @@ const skillGroups = [
   {
     category: "Content & Writing",
     emoji: "✍️",
-    bg: "bg-sketch-orange/20",
-    chip: "bg-sketch-orange/30",
-    rot: -1.5,
+    label: "bg-sketch-orange",
+    rot: -2,
     items: [
       "Content Writing", "Copywriting", "Scriptwriting", "Blogs & Articles",
       "Screenplay & Dialogue", "Technical Writing", "Editing & Review", "Proofreading",
@@ -18,9 +17,8 @@ const skillGroups = [
   {
     category: "Marketing & SEO",
     emoji: "📈",
-    bg: "bg-sketch-yellow/50",
-    chip: "bg-sketch-yellow",
-    rot: 1.5,
+    label: "bg-sketch-yellow",
+    rot: 2,
     items: [
       "SEO Optimization", "Keyword Research", "Meta Business Suite", "Google Trends",
       "Social Media Strategy", "Brand Strategy", "Digital Marketing", "Platform IQ",
@@ -29,61 +27,84 @@ const skillGroups = [
   {
     category: "Tools & Tech",
     emoji: "⚙️",
-    bg: "bg-sketch-blue/20",
-    chip: "bg-sketch-blue/30",
-    rot: 1,
+    label: "bg-sketch-blue",
+    rot: -1.5,
     items: ["MS Office", "Canva", "WordPress", "Notion", "Jira", "HTML", "Python", "Agile & Scrum"],
   },
   {
     category: "AI Tools",
     emoji: "🤖",
-    bg: "bg-sketch-red/15",
-    chip: "bg-sketch-red/25",
-    rot: -1,
+    label: "bg-sketch-red text-white",
+    rot: 1.5,
     items: ["Claude", "ChatGPT", "Elevenlabs", "Kittl", "Notebook LLM", "Gemini", "Prompt Engineering"],
   },
 ];
 
+const stickerColors = [
+  "bg-sketch-orange/30",
+  "bg-sketch-blue/25",
+  "bg-sketch-yellow/60",
+  "bg-sketch-red/20",
+  "bg-white",
+];
+const rotations = [-4, 3, -2, 5, -3, 4, -5, 2, -3, 4];
+
 export function Skills() {
   return (
-    <section id="skills" className="relative py-24 sm:py-28">
+    <section id="skills" className="relative py-24 sm:py-28 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="max-w-3xl mb-16">
-          <SectionHeader
-            eyebrow="✦ Expertise"
-            title="My"
-            highlight="toolbox"
-            accent="blue"
-          />
+        <div className="max-w-3xl mb-14">
+          <SectionHeader eyebrow="✦ Expertise" title="My sticker" highlight="collection" accent="blue" />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mt-6 text-xl text-ink/75"
+          >
+            Every skill I&apos;ve collected so far — peel one off the page. ✦
+            <span className="text-base text-ink/55"> (hover to straighten them out!)</span>
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillGroups.map((group, groupIndex) => (
-            <motion.div
-              key={group.category}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: groupIndex * 0.1 }}
-              className={`relative ${group.bg} ink-border wobble p-7 hard-shadow tilt-hover`}
-              style={{ transform: `rotate(${group.rot}deg)` }}
-            >
-              <span className="thumbtack" style={{ top: -7, right: 24 }} />
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-4xl">{group.emoji}</span>
-                <h3 className="text-2xl">{group.category}</h3>
+        <div className="space-y-10">
+          {skillGroups.map((group, gi) => (
+            <div key={group.category}>
+              <div className="grid md:grid-cols-[210px_1fr] gap-6 md:gap-8 items-start">
+                {/* Category tab label */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30, rotate: group.rot * 3 }}
+                  whileInView={{ opacity: 1, x: 0, rotate: group.rot }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", bounce: 0.4 }}
+                  className={`relative ${group.label} ink-border wobble px-5 py-4 hard-shadow-sm md:sticky md:top-28`}
+                >
+                  <span className="thumbtack" style={{ top: -7, right: 18 }} />
+                  <span className="text-4xl block">{group.emoji}</span>
+                  <h3 className="text-2xl leading-tight mt-1">{group.category}</h3>
+                  <span className="text-base opacity-80">{group.items.length} stickers</span>
+                </motion.div>
+
+                {/* Scattered stickers */}
+                <div className="flex flex-wrap gap-3 sm:gap-4 pt-1">
+                  {group.items.map((skill, i) => (
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.5, rotate: 0 }}
+                      whileInView={{ opacity: 1, scale: 1, rotate: rotations[i % rotations.length] }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.03, type: "spring", bounce: 0.5 }}
+                      whileHover={{ rotate: 0, y: -5, scale: 1.08 }}
+                      className={`inline-block ${stickerColors[i % stickerColors.length]} ink-border-2 wobble px-4 py-1.5 text-lg font-bold hard-shadow-sm cursor-default`}
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2.5">
-                {group.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className={`inline-block ${group.chip} ink-border-2 wobble px-3 py-1 text-base font-bold`}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+
+              {gi < skillGroups.length - 1 && <hr className="dashed-divider mt-10" />}
+            </div>
           ))}
         </div>
       </div>

@@ -164,6 +164,21 @@ h1, h2, h3, h4, h5, h6 {
   background-image: linear-gradient(transparent 55%, rgba(96, 165, 250, 0.5) 55%);
 }
 
+/* Ruled notebook paper */
+.ruled-paper {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 33px,
+    rgba(96, 165, 250, 0.22) 33px,
+    rgba(96, 165, 250, 0.22) 34px
+  );
+}
+
+/* Notched ribbon banner */
+.ribbon {
+  clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%);
+}
+
 /* Dashed sketchbook divider */
 .dashed-divider {
   border: none;
