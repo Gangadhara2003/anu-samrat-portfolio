@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const stats = [
-  { value: "2+", label: "Years Exp", rot: -2 },
-  { value: "6+", label: "Companies", rot: 1.5 },
-  { value: "50+", label: "Projects", rot: -1 },
+  { value: "2.5+", label: "Years Exp", rot: -2 },
+  { value: "5+", label: "Companies", rot: 1.5 },
+  { value: "30+", label: "Projects", rot: -1 },
   { value: "15+", label: "Skills", rot: 2 },
 ];
 
@@ -56,31 +56,34 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.95]"
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight"
             >
-              Words that
-              <br />
-              <span className="relative inline-block text-sketch-orange">
-                move minds
-                {/* Hand-drawn scribble underline */}
-                <svg
-                  className="absolute -bottom-4 left-0 w-full"
-                  height="24"
-                  viewBox="0 0 300 24"
-                  fill="none"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    className="scribble-path"
-                    d="M3 14C50 6 100 18 150 11C200 4 250 16 297 9"
-                    stroke="#fb923c"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                  />
-                </svg>
+              <span className="block">Stories &amp;</span>
+              <span className="block">Strategies that</span>
+              <span className="block mt-1">
+                seek the{" "}
+                <span className="relative inline-block text-sketch-orange">
+                  attention
+                  {/* Hand-drawn scribble underline */}
+                  <svg
+                    className="absolute -bottom-3 left-0 w-full"
+                    height="20"
+                    viewBox="0 0 300 20"
+                    fill="none"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      className="scribble-path"
+                      d="M3 12C50 5 100 15 150 9C200 3 250 13 297 7"
+                      stroke="#fb923c"
+                      strokeWidth="5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
               </span>
-              <br />& markets.
+              <span className="block mt-1 text-ink/70">you deserve.</span>
             </motion.h1>
 
             <motion.p
@@ -89,9 +92,10 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-8 text-xl sm:text-2xl max-w-xl mx-auto lg:mx-0 leading-relaxed text-ink/80"
             >
-              Content Writer • Scriptwriter • SEO Strategist • Brand Storyteller —
-              turning complex ideas into stories that{" "}
-              <span className="marker font-bold">actually convert.</span>
+              Creative Strategist • Content Writer • Copywriter • Social Media Executive —
+              Conveying the{" "}
+              <span className="marker-blue font-bold">stories through ideas</span> and{" "}
+              <span className="marker font-bold">Ideas through stories.</span>
             </motion.p>
 
             <motion.div
@@ -161,7 +165,7 @@ export function Hero() {
                   className="mt-3 text-center text-2xl"
                   style={{ fontFamily: "var(--font-kalam)" }}
                 >
-                  Anusamrat ✍️
+                  Anusamrat M✍️
                 </p>
               </div>
               {/* Floating mini badge */}
@@ -170,31 +174,12 @@ export function Hero() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -bottom-6 -left-8 bg-sketch-blue ink-border-2 wobble px-3 py-2 hard-shadow-sm"
               >
-                <span className="text-base font-bold">🎬 Scriptwriter</span>
+                <span className="text-base font-bold">🎬 Creative Strategist</span>
               </motion.div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
-      >
-        <span className="text-base text-ink/60" style={{ fontFamily: "var(--font-kalam)" }}>
-          scroll down
-        </span>
-        <motion.span
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="text-2xl"
-        >
-          ↓
-        </motion.span>
-      </motion.div>
     </section>
   );
 }

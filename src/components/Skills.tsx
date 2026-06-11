@@ -10,33 +10,62 @@ const skillGroups = [
     label: "bg-sketch-orange",
     rot: -2,
     items: [
-      "Content Writing", "Copywriting", "Scriptwriting", "Blogs & Articles",
-      "Screenplay & Dialogue", "Technical Writing", "Editing & Review", "Proofreading",
+      "Content Writing", "Copywriting", "Scriptwriting & Development", "Blogs & Articles",
+      "Screenplay", "Editorial", "Reviews & Audits", "Ad Writing",
+      "UGC Content", "Documentation", "Proofreading",
     ],
   },
   {
-    category: "Marketing & SEO",
+    category: "Strategy & Marketing",
     emoji: "📈",
     label: "bg-sketch-yellow",
     rot: 2,
     items: [
-      "SEO Optimization", "Keyword Research", "Meta Business Suite", "Google Trends",
-      "Social Media Strategy", "Brand Strategy", "Digital Marketing", "Platform IQ",
+      "Content Strategy", "Campaign Strategy", "Brand Strategy", "Social Media Strategy",
+      "Digital Marketing", "Email Marketing", "Influencer Marketing",
+      "Talent Acquisition", "Basic SEO", "Keyword Research",
     ],
   },
   {
-    category: "Tools & Tech",
-    emoji: "⚙️",
+    category: "Platforms & Social Media",
+    emoji: "📱",
     label: "bg-sketch-blue",
     rot: -1.5,
-    items: ["MS Office", "Canva", "WordPress", "Notion", "Jira", "HTML", "Python", "Agile & Scrum"],
+    items: [
+      "Instagram", "Facebook", "WhatsApp Business", "LinkedIn",
+      "YouTube", "Reddit", "X", "Discord", "Meta Business Suite",
+    ],
   },
   {
-    category: "AI Tools",
+    category: "Tools & Software",
+    emoji: "⚙️",
+    label: "bg-sketch-orange",
+    rot: 1.5,
+    items: [
+      "Hootsuite", "Klaviyo", "HubSpot", "Zapier", "Monday.com", "ClickUp",
+      "Notion", "Jira", "Trello", "Google Trends", "Canva",
+      "Google Sheets", "MS Word", "HTML", "Agile & Scrum",
+    ],
+  },
+  {
+    category: "AI & Emerging Tech",
     emoji: "🤖",
     label: "bg-sketch-red text-white",
-    rot: 1.5,
-    items: ["Claude", "ChatGPT", "Elevenlabs", "Kittl", "Notebook LLM", "Gemini", "Prompt Engineering"],
+    rot: -2,
+    items: [
+      "ChatGPT", "Claude", "Gemini", "ElevenLabs", "NotebookLM",
+      "Prompt Engineering", "AI Image Generation", "AI Video Generation",
+    ],
+  },
+  {
+    category: "Design & Presentation",
+    emoji: "🎨",
+    label: "bg-sketch-yellow",
+    rot: 2,
+    items: [
+      "Canva", "Design Theory", "Color Theory",
+      "Google Slides", "MS PowerPoint", "Cursor",
+    ],
   },
 ];
 
@@ -54,7 +83,7 @@ export function Skills() {
     <section id="skills" className="relative py-24 sm:py-28 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="max-w-3xl mb-14">
-          <SectionHeader eyebrow="✦ Expertise" title="My sticker" highlight="collection" accent="blue" />
+          <SectionHeader eyebrow="✦ Expertise" title="Hall of" highlight="Skillset" accent="blue" />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,8 +91,7 @@ export function Skills() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-xl text-ink/75"
           >
-            Every skill I&apos;ve collected so far — peel one off the page. ✦
-            <span className="text-base text-ink/55"> (hover to straighten them out!)</span>
+            Every skill I&apos;ve invested my interest in and want to keep developing further.
           </motion.p>
         </div>
 

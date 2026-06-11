@@ -14,7 +14,7 @@ const quickLinks = [
 const socials = [
   { label: "WA", href: "https://wa.me/918762835357", bg: "bg-sketch-blue" },
   { label: "in", href: "https://www.linkedin.com/in/anusamrat-m-8592b2277/", bg: "bg-sketch-orange" },
-  { label: "IG", href: "https://www.instagram.com/anu_samrat/", bg: "bg-sketch-red" },
+  { label: "IG", href: "https://www.instagram.com/__anusamrat13?igsh=bjZiaDR2bThvbG5n", bg: "bg-sketch-red" },
   { label: "@", href: "mailto:samratanu133@gmail.com", bg: "bg-sketch-yellow" },
 ];
 

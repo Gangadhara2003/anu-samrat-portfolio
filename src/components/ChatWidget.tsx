@@ -8,7 +8,7 @@ const quickActions = [
   { label: "Hire Me", emoji: "💼", bg: "bg-sketch-orange/30", action: () => (window.location.href = "#contact") },
   { label: "Browse Portfolio", emoji: "🎨", bg: "bg-sketch-blue/25", action: () => (window.location.href = "#portfolio") },
   { label: "Ask About Skills", emoji: "⚡", bg: "bg-sketch-yellow/60", action: () => (window.location.href = "#skills") },
-  { label: "Get Resume", emoji: "📄", bg: "bg-sketch-red/20", action: () => window.open("mailto:samratanu133@gmail.com?subject=Resume Request", "_blank") },
+  { label: "Get Resume", emoji: "📄", bg: "bg-sketch-red/20", action: () => window.open("https://drive.google.com/file/d/1qsvksGE078igNhp80O3uxWDHwkTyyTyd/view", "_blank") },
   { label: "Watch Videos", emoji: "🎬", bg: "bg-sketch-blue/25", action: () => (window.location.href = "#videos") },
   { label: "WhatsApp Me", emoji: "💬", bg: "bg-sketch-orange/30", action: () => window.open("https://wa.me/918762835357", "_blank") },
 ];

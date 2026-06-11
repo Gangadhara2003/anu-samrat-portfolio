@@ -47,8 +47,8 @@ export function About() {
         <div className="max-w-3xl mb-16">
           <SectionHeader
             eyebrow="✦ About Me"
-            title="Narratives that"
-            highlight="inform & convert"
+            title="Intent behind"
+            highlight="all this"
             accent="orange"
           />
           <motion.p
@@ -58,10 +58,10 @@ export function About() {
             transition={{ delay: 0.2 }}
             className="mt-8 text-xl sm:text-2xl leading-relaxed text-ink/80"
           >
-            I bridge the gap between complex ideas and{" "}
-            <span className="marker font-bold">relatable storytelling</span> — from SEO blogs
-            for global startups to YouTube scripts watched by thousands. Every word is
-            intentional, every sentence serves a purpose.
+            Started with a fascination for storytelling and a habit of dissecting what makes ideas resonate.
+            That curiosity grew into a career across content, copywriting, scripting, and social media.
+            Today, I build stories, strategies, and systems designed to{" "}
+            <span className="marker font-bold">earn attention and drive value.</span>
           </motion.p>
         </div>
 
