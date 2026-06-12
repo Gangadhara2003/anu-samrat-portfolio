@@ -27,7 +27,7 @@ export function Footer() {
             {/* Brand */}
             <div>
               <Link href="/" className="text-2xl font-bold" style={{ fontFamily: "var(--font-kalam)" }}>
-                <span className="text-sketch-orange">{"{"}</span>anu.sketch
+                <span className="text-sketch-orange">{"{"}</span>Portfolio
                 <span className="text-sketch-orange">{"}"}</span>
               </Link>
               <p className="text-lg text-ink/75 leading-relaxed max-w-xs mt-3">

@@ -51,7 +51,7 @@ const experience = [
     role: "Social Media, Content Writing & Marketing Intern",
     company: "Pehchaan The Street School",
     type: "Non-Governmental Organization",
-    period: "Apr 2025 – Jun 2025",
+    period: "Jan 2025 – Apr 2025",
     achievements: [
       "Wrote blogs, articles, poems & stories around social issues — making cause-driven content feel human, not performative.",
       "Produced campaign content across Instagram, Medium, Quora, Blogger & Reddit with basic SEO to drive organic reach.",
@@ -63,7 +63,7 @@ const experience = [
     role: "Scriptwriter",
     company: "PadhleAkshay (YouTube)",
     type: "Educational Content",
-    period: "Dec 2023 – Apr 2025",
+    period: "Apr 2024 – Dec 2024",
     achievements: [
       "Wrote long-format scripts for a 14–22 audience spanning Physics, Chemistry, English & socio-psychological infotainment.",
       "Built scripts around YouTube retention mechanics — hooks, pacing & CTAs to keep viewers watching.",

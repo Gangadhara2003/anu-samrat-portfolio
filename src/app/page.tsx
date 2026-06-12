@@ -3,11 +3,10 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import { Experience } from "@/components/Experience";
+import { Brands } from "@/components/Brands";
 import { Portfolio } from "@/components/Portfolio";
 import { Videos } from "@/components/Videos";
 import { Reels } from "@/components/Reels";
-import { Certifications } from "@/components/Certifications";
-import { References } from "@/components/References";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
@@ -20,11 +19,10 @@ export default function Home() {
       <About />
       <Skills />
       <Experience />
+      <Brands />
       <Portfolio />
       <Videos />
       <Reels />
-      <Certifications />
-      <References />
       <Contact />
       <Footer />
       <ChatWidget />

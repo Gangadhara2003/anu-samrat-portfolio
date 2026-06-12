@@ -6,9 +6,9 @@ import { SectionHeader } from "@/components/SectionHeader";
 const services = [
   {
     icon: "📝",
-    title: "Content Writing & SEO",
+    title: "Content Writing & Social Media",
     description:
-      "SEO-optimized blogs, articles, and web copy that ranks and resonates. Data-driven strategy for B2B, B2C, SaaS, and D2C brands.",
+      "Social Media Execution , Blogs, and web copy that resonates. Data-driven strategy for B2B, B2C, SaaS, and D2C brands.",
     seal: "bg-sketch-orange",
     shadow: "hard-shadow-orange",
     marker: "marker-orange",
@@ -30,7 +30,7 @@ const services = [
     icon: "📢",
     title: "Brand Strategy & Marketing",
     description:
-      "Social media strategy, campaign copy, ad creatives, and brand voice development — cohesive narratives across every touchpoint.",
+      "Cater Brand Identity through campaign, ad creatives, and brand voice development — cohesive narratives across every touchpoint.",
     seal: "bg-sketch-red",
     shadow: "hard-shadow-red",
     marker: "marker",

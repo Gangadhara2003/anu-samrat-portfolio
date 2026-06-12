@@ -4,17 +4,13 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 
 const reels = [
-  { id: "DTemYiUk870", url: "https://www.instagram.com/reel/DTemYiUk870/embed/captioned/" },
-  { id: "DULJ-54ky0D", url: "https://www.instagram.com/reel/DULJ-54ky0D/embed/captioned/" },
-  { id: "DSaAMrCjMwn", url: "https://www.instagram.com/reel/DSaAMrCjMwn/embed/captioned/" },
-  { id: "DUVgbhQAR33", url: "https://www.instagram.com/reel/DUVgbhQAR33/embed/captioned/" },
-];
-
-const reelStats = [
-  { value: "50K+", label: "Total Reach", emoji: "🚀", bg: "bg-sketch-orange/30", rot: -2 },
-  { value: "10K+", label: "Views", emoji: "👁️", bg: "bg-sketch-blue/25", rot: 1.5 },
-  { value: "1K+", label: "Likes", emoji: "❤️", bg: "bg-sketch-red/20", rot: -1.5 },
-  { value: "Featured", label: "Content", emoji: "⭐", bg: "bg-sketch-yellow/60", rot: 2 },
+  { id: "DZXq7CgPXEN", title: "Creative Reel Concepts", url: "https://www.instagram.com/reel/DZXq7CgPXEN/embed/captioned/" },
+  { id: "DVitG0Xk3G6", title: "Visual Hook Reel", url: "https://www.instagram.com/reel/DVitG0Xk3G6/embed/captioned/" },
+  { id: "DSaAMrCjMwn", title: "Meme Usage × Viral", url: "https://www.instagram.com/reel/DSaAMrCjMwn/embed/captioned/" },
+  { id: "DX6wBtNitjS", title: "AI Generated Reels", url: "https://www.instagram.com/reel/DX6wBtNitjS/embed/captioned/" },
+  { id: "DTemYiUk870", title: "Featured Reel", url: "https://www.instagram.com/reel/DTemYiUk870/embed/captioned/" },
+  // { id: "DULJ-54ky0D", title: "Featured Reel", url: "https://www.instagram.com/reel/DULJ-54ky0D/embed/captioned/" },
+  { id: "DUVgbhQAR33", title: "Featured Reel", url: "https://www.instagram.com/reel/DUVgbhQAR33/embed/captioned/" },
 ];
 
 export function Reels() {
@@ -25,31 +21,10 @@ export function Reels() {
           <SectionHeader
             eyebrow="✦ Reels & Shorts"
             title="Creative"
-            highlight="highlights"
+            highlight="Reels"
             accent="blue"
           />
         </div>
-
-        {/* Stats — pinned notes */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-14"
-        >
-          {reelStats.map((stat) => (
-            <div
-              key={stat.label}
-              className={`relative ${stat.bg} ink-border wobble p-5 text-center hard-shadow-sm`}
-              style={{ transform: `rotate(${stat.rot}deg)` }}
-            >
-              <span className="thumbtack" style={{ top: -7, left: "50%", marginLeft: -7 }} />
-              <span className="text-3xl block mb-1">{stat.emoji}</span>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <div className="text-base text-ink/70 mt-0.5">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
 
         {/* Reels */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -71,9 +46,10 @@ export function Reels() {
                   scrolling="no"
                   allowFullScreen
                   loading="lazy"
-                  title={`Instagram Reel ${reel.id}`}
+                  title={reel.title}
                 />
               </div>
+              <p className="text-center text-base font-bold leading-tight mt-2 px-1">{reel.title}</p>
             </motion.div>
           ))}
         </div>

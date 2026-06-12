@@ -27,9 +27,8 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:px-6">
       <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between gap-4 bg-white wobble ink-border px-5 py-3 transition-all duration-300 ${
-          scrolled ? "hard-shadow-sm" : "hard-shadow"
-        }`}
+        className={`mx-auto flex max-w-6xl items-center justify-between gap-4 bg-white wobble ink-border px-5 py-3 transition-all duration-300 ${scrolled ? "hard-shadow-sm" : "hard-shadow"
+          }`}
         aria-label="Global"
       >
         {/* Logo in curly braces */}
@@ -39,7 +38,7 @@ export function Navbar() {
           style={{ fontFamily: "var(--font-kalam)" }}
         >
           <span className="text-sketch-orange">{"{"}</span>
-          anu<span className="text-ink">.sketch</span>
+          Portfolio
           <span className="text-sketch-orange">{"}"}</span>
         </Link>
 
@@ -90,7 +89,7 @@ export function Navbar() {
                 style={{ fontFamily: "var(--font-kalam)" }}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span className="text-sketch-orange">{"{"}</span>anu.sketch
+                <span className="text-sketch-orange">{"{"}</span>Portfolio
                 <span className="text-sketch-orange">{"}"}</span>
               </Link>
               <button

@@ -11,8 +11,11 @@ const videos = [
   { id: "xQ5OGic9xhU", title: "Featured Video 5" },
   { id: "SgESWe9GhHo", title: "Featured Video 6" },
   { id: "6O18wTdUK0Q", title: "Featured Video 7" },
-  { id: "84NBaYPDPHs", title: "Featured Video 8" },
   { id: "ikZPjSCrRV8", title: "Featured Video 9" },
+  { id: "DtVOFGhoiss", title: "Featured Video 10" },
+  { id: "Xx46eQ78nU4", title: "Featured Video 11" },
+  { id: "OwuXF1AyKak", title: "Featured Video 12" },
+  { id: "uqf6NoAhFts", title: "Featured Video 13" },
 ];
 
 export function Videos() {
